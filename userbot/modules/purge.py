@@ -35,9 +35,9 @@ async def fastpurger(purg):
             await purg.client.delete_messages(chat, msgs)
         done = await purg.client.send_message(
             purg.chat_id,
-            "`Fast purge complete!\n`Purged " + str(count) +
-            " messages. **This auto-generated message " +
-            "  shall be self destructed in 2 seconds.**",
+            "`Cancellazione veloce completata!\n`Cancellati " + str(count) +
+            " messaggi. **Questo messaggio auto-generato " +
+            "  si distruggerà tra 2 secondi.**",
         )
 
         if BOTLOG:
