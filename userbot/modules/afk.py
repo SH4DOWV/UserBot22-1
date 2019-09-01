@@ -134,7 +134,7 @@ async def type_afk_is_not_true(e):
                 )
         COUNT_MSG = 0
         USERS = {}
-        AFKREASON = "No Reason"
+        AFKREASON = "Nessun motivo."
 
 
 CMD_HELP.update({
