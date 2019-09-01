@@ -61,7 +61,7 @@ async def afk_on_pm(e):
             if e.sender_id not in USERS:
                 await e.reply(
                     "Scusa! Ma shadow è AFK per ```" + await afk_reason() +
-                    "``` Gli manderò una notifica per far vedere il tuo messaggio😉")
+                    ."``` Gli manderò una notifica per far vedere il tuo messaggio😉")
                 USERS.update({e.sender_id: 1})
                 COUNT_MSG = COUNT_MSG + 1
             elif e.sender_id in USERS:
@@ -91,7 +91,7 @@ async def set_afk(e):
             AFKREASON = ''
         if not AFKREASON:
             AFKREASON = 'No reason'
-        await e.edit("AFK AF!")
+        await e.edit("AFK Attivato!")
         if BOTLOG:
             await e.client.send_message(BOTLOG_CHATID, "You went AFK!")
         await afk(AFKREASON)
@@ -109,7 +109,7 @@ async def type_afk_is_not_true(e):
     ISAFK = await is_afk()
     if ISAFK is True:
         await no_afk()
-        x = await e.respond("I'm no longer AFK.")
+        x = await e.respond("Non sono più AFK.")
         y = await e.respond(
             "`Hai ricevuto " + str(COUNT_MSG) +
             " messaggi mentre eri fuori. Controlla i log per i dettagli.`" +
