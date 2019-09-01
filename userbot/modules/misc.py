@@ -36,7 +36,7 @@ async def sleepybot(time):
             await time.reply("Syntax: `.sleep [seconds]`")
         else:
             counter = int(time.pattern_match.group(1))
-            await time.edit("`I am sulking and snoozing....`")
+            await time.edit("`Sono abbastanza stanco, faccio un riposino...`")
             sleep(2)
             if BOTLOG:
                 await time.client.send_message(
@@ -52,7 +52,7 @@ async def sleepybot(time):
 async def killdabot(event):
     """ For .shutdown command, shut the bot down."""
     if not event.text[0].isalpha():
-        await event.edit("`Goodbye *Windows XP shutdown sound*....`")
+        await event.edit("`Addio *Suono spegnimento nWindows XP*....`")
         if BOTLOG:
             await event.client.send_message(BOTLOG_CHATID, "#SHUTDOWN \n"
                                             "Bot shut down")
@@ -64,7 +64,7 @@ async def killdabot(event):
 async def killdabot(event):
 
     if not event.text[0].isalpha():
-        await event.edit("`Hold tight! I just need a second to be back up....`"
+        await event.edit("`Rieccomi! Avevo bisogno di un back up....`"
                          )
         if BOTLOG:
             await event.client.send_message(BOTLOG_CHATID, "#RESTART \n"
