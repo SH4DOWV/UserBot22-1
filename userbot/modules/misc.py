@@ -52,7 +52,7 @@ async def sleepybot(time):
 async def killdabot(event):
     """ For .shutdown command, shut the bot down."""
     if not event.text[0].isalpha():
-        await event.edit("`Addio *Suono spegnimento nWindows XP*....`")
+        await event.edit("`Addio *Suono spegnimento Windows XP*....`")
         if BOTLOG:
             await event.client.send_message(BOTLOG_CHATID, "#SHUTDOWN \n"
                                             "Bot shut down")
