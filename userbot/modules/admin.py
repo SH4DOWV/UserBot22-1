@@ -29,7 +29,7 @@ from userbot.modules.dbhelper import (mute, unmute, get_muted, gmute, ungmute,
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "`The image is too small`"
 PP_ERROR = "`Failure while processing image`"
-NO_ADMIN = "`You aren't an admin!`"
+NO_ADMIN = "`Non sei Admin!`"
 NO_PERM = "`You don't have sufficient permissions!`"
 NO_SQL = "`Database connections failing!`"
 
@@ -131,7 +131,7 @@ async def promote(promt):
                                      delete_messages=True,
                                      pin_messages=True)
 
-        await promt.edit("`Promoting...`")
+        await promt.edit("`Promuovendo...`")
 
         user = await get_user_from_event(promt)
         if user:
@@ -143,7 +143,7 @@ async def promote(promt):
         try:
             await promt.client(
                 EditAdminRequest(promt.chat_id, user.id, new_rights))
-            await promt.edit("`Promoted Successfully!`")
+            await promt.edit("`Promosso con successo!`")
 
         # If Telethon spit BadRequestError, assume
         # we don't have Promote permission
@@ -177,7 +177,7 @@ async def demote(dmod):
             return
 
         # If passing, declare that we're going to demote
-        await dmod.edit("`Demoting...`")
+        await dmod.edit("`Retrocedendo...`")
 
         user = await get_user_from_event(dmod)
         if user:
@@ -202,7 +202,7 @@ async def demote(dmod):
         except BadRequestError:
             await dmod.edit(NO_PERM)
             return
-        await dmod.edit("`Demoted Successfully!`")
+        await dmod.edit("`Retrocesso con successo!`")
 
         # Announce to the logging group if we have demoted successfully
         if BOTLOG:
@@ -236,7 +236,7 @@ async def ban(bon):
 
         # If the user is a sudo
         if user.id in BRAIN_CHECKER:
-            await bon.edit("`Ban Error! I am not supposed to ban this user`")
+            await bon.edit("`Errore Ban! Non ho il permesso di bannare questo Utente.`")
             return
 
         # Announce that we're going to whack the pest
@@ -254,14 +254,14 @@ async def ban(bon):
             if reply:
                 await reply.delete()
         except BadRequestError:
-            bmsg = "`I dont have enough rights! But still he was banned!`"
+            bmsg = "`Non ho i permessi! Ma rimane comunque bannato!`"
             await bon.edit(bmsg)
             return
         # Delete message and then tell that the command
         # is done gracefully
         # Shout out the ID, so that fedadmins can fban later
 
-        await bon.edit("`{}` was banned!".format(str(user.id)))
+        await bon.edit("`{}` era bannato!".format(str(user.id)))
 
         # Announce to the logging group if we have demoted successfully
         if BOTLOG:
@@ -292,7 +292,7 @@ async def nothanos(unbon):
             return
 
         # If everything goes well...
-        await unbon.edit("`Unbanning...`")
+        await unbon.edit("`Unbannando...`")
 
         user = await get_user_from_event(unbon)
         if user:
@@ -303,7 +303,7 @@ async def nothanos(unbon):
         try:
             await unbon.client(
                 EditBannedRequest(unbon.chat_id, user.id, UNBAN_RIGHTS))
-            await unbon.edit("```Unbanned Successfully```")
+            await unbon.edit("```Unbannato con successo!```")
 
             if BOTLOG:
                 await unbon.client.send_message(
@@ -346,19 +346,19 @@ async def spider(spdr):
 
         if user.id == self_user.id:
             await spdr.edit(
-                "`Mute Error! You are not supposed to mute yourself!`")
+                "`Errore mute! Non posso mutarmi 😆!`")
             return
 
         # If the targeted user is a Sudo
         if user.id in BRAIN_CHECKER:
-            await spdr.edit("`Mute Error! I am not supposed to mute this user`"
+            await spdr.edit("`Errore mute! Non posso mutare questo utente.`"
                             )
             return
 
         # If everything goes well, do announcing and mute
-        await spdr.edit("`Gets a tape!`")
+        await spdr.edit("`Prendi un nastro e chiudi quella bocca!`")
         if await mute(spdr.chat_id, user.id) is False:
-            return await spdr.edit('`Error! User probably already muted.`')
+            return await spdr.edit('`Errore! Utente probabilmente già mutato.`')
         else:
             try:
                 await spdr.client(
@@ -373,18 +373,18 @@ async def spider(spdr):
                         f"USER: [{user.first_name}](tg://user?id={user.id})\n"
                         f"CHAT: {spdr.chat.title}(`{spdr.chat_id}`)")
             except UserIdInvalidError:
-                return await spdr.edit("`Uh oh my unmute logic broke!`")
+                return await spdr.edit("`Il mio mute non va!`")
 
             # These indicate we couldn't hit him an API mute, possibly an
             # admin?
 
             except (UserAdminInvalidError, ChatAdminRequiredError,
                     BadRequestError):
-                return await spdr.edit("""`I couldn't mute on the API,
-                could be an admin possibly?
-                Anyways muted on the userbot.
-                I'll automatically delete messages
-                in this chat from this person`""")
+                return await spdr.edit("""`Non posso mutare sull' API,
+                c'è un admin possibilmente?
+                Comunque mutato sull'userbot.
+                Cancellerò automaticamente i messaggi
+                in questa chat di quell'utente.`""")
 
 
 @register(outgoing=True, pattern="^.unmute(?: |$)(.*)")
@@ -409,7 +409,7 @@ async def unmoot(unmot):
             await unmot.edit(NO_SQL)
             return
         # If admin or creator, inform the user and start unmuting
-        await unmot.edit('```Unmuting...```')
+        await unmot.edit('```Unmutando...```')
         user = await get_user_from_event(unmot)
         if user:
             pass
@@ -417,13 +417,13 @@ async def unmoot(unmot):
             return
 
         if await unmute(unmot.chat_id, user.id) is False:
-            return await unmot.edit("`Error! User probably already unmuted.`")
+            return await unmot.edit("`Errore! Utente probabilmente già mutato.`")
         else:
 
             try:
                 await unmot.client(
                     EditBannedRequest(unmot.chat_id, user.id, UNMUTE_RIGHTS))
-                await unmot.edit("```Unmuted Successfully```")
+                await unmot.edit("```Unmutato con successo!```")
             except UserIdInvalidError:
                 await unmot.edit("`Uh oh my unmute logic broke!`")
                 return
@@ -501,14 +501,14 @@ async def ungmoot(un_gmute):
             return
 
         # If pass, inform and start ungmuting
-        await un_gmute.edit('```Ungmuting...```')
+        await un_gmute.edit('```Unmutando globalmente...```')
 
         if await ungmute(user.id) is False:
-            await un_gmute.edit("`Error! User probably not gmuted.`")
+            await un_gmute.edit("`Errore! Utente probabilmente non globalmente mutato.`")
         else:
 
             # Inform about success
-            await un_gmute.edit("```Ungmuted Successfully```")
+            await un_gmute.edit("```Unmutato globalmente con successo!```")
 
             if BOTLOG:
                 await un_gmute.client.send_message(
@@ -545,16 +545,16 @@ async def gspider(gspdr):
 
         # If the targeted user is a SUDO
         if user.id in BRAIN_CHECKER:
-            await gspdr.edit("`Gmute Error! Couldn't gmute this user`")
+            await gspdr.edit("`Errore Mute Globale! Non posso mutare globalmente questo utente.`")
             return
 
         # If pass, inform and start gmuting
-        await gspdr.edit("`Grabs a huge, sticky duct tape!`")
+        await gspdr.edit("`Prendi un enorme nastro, e mutalo dappertutto!`")
 
         if await gmute(user.id) is False:
-            await gspdr.edit('`Error! User probably already gmuted.`')
+            await gspdr.edit('`Errore! Utente probabilmente già globalmente mutato.`')
         else:
-            await gspdr.edit("`Globally taped!`")
+            await gspdr.edit("`Mutato globalmente!`")
 
             if BOTLOG:
                 await gspdr.client.send_message(
@@ -570,14 +570,14 @@ async def rm_deletedacc(show):
     if not show.text[0].isalpha() and show.text[0] not in ("/", "#", "@", "!"):
         con = show.pattern_match.group(1)
         del_u = 0
-        del_status = "`No deleted accounts found, Group is cleaned as Hell`"
+        del_status = "`Account Eliminati non trovati, questo gruppo è pulito.`"
 
         if not show.is_group:
             await show.edit("`This command is only for groups!`")
             return
 
         if con != "clean":
-            await show.edit("`Searching for zombie accounts...`")
+            await show.edit("`Cercando per account zombi...`")
             async for user in show.client.iter_participants(show.chat_id):
                 if user.deleted:
                     del_u += 1
@@ -597,10 +597,10 @@ async def rm_deletedacc(show):
 
         # Well
         if not admin and not creator:
-            await show.edit("`You aren't an admin here!`")
+            await show.edit("`Non sei Admin qui!`")
             return
 
-        await show.edit("`Cleaning deleted accounts...`")
+        await show.edit("`Ripulendo dagli Account Eliminati...`")
         del_u = 0
         del_a = 0
 
@@ -621,11 +621,11 @@ async def rm_deletedacc(show):
                 del_u += 1
 
         if del_u > 0:
-            del_status = f"cleaned **{del_u}** deleted account(s)"
+            del_status = f"ripuliti **{del_u}** Account Eliminati."
 
         if del_a > 0:
-            del_status = f"cleaned **{del_u}** deleted account(s) \
-\n**{del_a}** deleted admin accounts are not removed"
+            del_status = f"ripuliti **{del_u}** Account Eliminati \
+\n**{del_a}** gli Account Eliminati Admin non sono stati ripuliti."
 
         await show.edit(del_status)
 
@@ -674,7 +674,7 @@ async def pin(msg):
         to_pin = msg.reply_to_msg_id
 
         if not to_pin:
-            await msg.edit("`Reply to a message which you want to pin.`")
+            await msg.edit("`Rispondi al messaggio che vuoi fissare.`")
             return
 
         options = msg.pattern_match.group(1)
@@ -691,7 +691,7 @@ async def pin(msg):
             await msg.edit(NO_PERM)
             return
 
-        await msg.edit("`Pinned Successfully!`")
+        await msg.edit("`Fissato!`")
 
         user = await get_user_from_id(msg.from_id, msg)
 
@@ -721,15 +721,15 @@ async def kick(usr):
 
         user = await get_user_from_event(usr)
         if not user:
-            await usr.edit("`Couldn't fetch user.`")
+            await usr.edit("`Non trovo l'utente.`")
             return
 
         # If the targeted user is a Sudo
         if user.id in BRAIN_CHECKER:
-            await usr.edit("`Kick Error! I am not supposed to kick this user`")
+            await usr.edit("`Errore kick! Non posso kickare questo utente.`")
             return
 
-        await usr.edit("`Kicking...`")
+        await usr.edit("`Kickando...`")
 
         try:
             await usr.client(
@@ -742,7 +742,7 @@ async def kick(usr):
             EditBannedRequest(usr.chat_id, user.id,
                               ChatBannedRights(until_date=None)))
 
-        kmsg = "`Kicked` [{}](tg://user?id={})`!`"
+        kmsg = "`Kickato` [{}](tg://user?id={})`!`"
         await usr.edit(kmsg.format(user.first_name, user.id))
 
         if BOTLOG:
