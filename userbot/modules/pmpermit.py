@@ -19,10 +19,10 @@ from userbot.modules.dbhelper import (approval, approve, block_pm, notif_state,
 
 # ========================= CONSTANTS ============================
 UNAPPROVED_MSG = (
-    "`Bleep blop! This is a bot. Don't fret.\n\n`"
-    "`My master hasn't approved you to PM.`"
-    "`Please wait for my master to look in, he mostly approves PMs.\n\n`"
-    "`As far as I know, he doesn't usually approve retards though.`")
+    "`Hey! Questo è un messaggio automatico.`"
+    "`Shadow non ti ha approvato a parlare con lui.`"
+    "`Per favore, aspetta che torni, di solito lui approva PM(Private Messages).`"
+    "`Non approva coglioni, che contattano senza permesso o persone mai viste. Invia più di 4 messaggi senza essere approvato e verrai segnalato per spam.`")
 # =================================================================
 
 
@@ -69,9 +69,9 @@ async def permitpm(event):
                     COUNT_PM[event.chat_id] = COUNT_PM[event.chat_id] + 1
 
                 if COUNT_PM[event.chat_id] > 4:
-                    await event.respond("`You were spamming my master's PM, "
-                                        " which I don't like.`"
-                                        " `I'mma Report Spam.`")
+                    await event.respond("`Hai mandato più di 4 messaggi, "
+                                        " ciò che ti ho detto di non fare.`"
+                                        " `Ti reporto per spam.`")
 
                     try:
                         del COUNT_PM[event.chat_id]
@@ -160,7 +160,7 @@ async def approvepm(apprvpm):
             return
 
         if await approve(apprvpm.chat_id) is False:
-            return await apprvpm.edit("`User was already approved!`")
+            return await apprvpm.edit("`User era già approvato!`")
         else:
             if apprvpm.reply_to_msg_id:
                 reply = await apprvpm.get_reply_message()
@@ -176,7 +176,7 @@ async def approvepm(apprvpm):
                 uid = apprvpm.chat_id
 
             await apprvpm.edit(
-                f"[{name0}](tg://user?id={uid}) `approved to PM!`")
+                f"[{name0}](tg://user?id={uid}) `approvato a scrivermi in PM!`")
 
             if BOTLOG:
                 await apprvpm.client.send_message(
@@ -192,7 +192,7 @@ async def blockpm(block):
     """ For .block command, block people from PMing you! """
     if not block.text[0].isalpha() and block.text[0] not in ("/", "#", "@",
                                                              "!"):
-        await block.edit("`You are gonna be blocked from PM-ing my Master!`")
+        await block.edit("`Shadow non riceverà più le notifiche dei tuoi messaggi in PM!`")
 
         if await block_pm(block.chat_id) is False:
             return await block.edit("`First approve, before blocc'ing`")
