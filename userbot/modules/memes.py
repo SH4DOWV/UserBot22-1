@@ -364,7 +364,7 @@ async def zal(zgfy):
 async def hoi(hello):
     """ Greet everyone! """
     if False:
-        await hello.edit("Hoi!😄")
+        await hello.edit("Weee!😄")
 
 
 @register(outgoing=True, pattern="^.owo(?: |$)(.*)")
@@ -414,7 +414,7 @@ async def shrugger(shg):
 @register(outgoing=True, pattern="^.runs$")
 @errors_handler
 async def runner_lol(run):
-    """ Run, run, RUNNN! """
+    """ Corri, corri, CORRIII! """
     if not DISABLE_RUN:
         if not run.text[0].isalpha() and run.text[0] not in ("/", "#", "@",
                                                              "!"):
@@ -493,7 +493,7 @@ async def claptext(memereview):
         elif textx:
             message = textx.text
         else:
-            await memereview.edit("`Hah, I don't clap pointlessly!`")
+            await memereview.edit("`Hah, Io non batto le mani inutilmente!`")
             return
         reply_text = "👏 "
         reply_text += message.replace(" ", " 👏 ")
@@ -508,8 +508,8 @@ async def bluetext(bt_e):
     if not bt_e.text[0].isalpha() and bt_e.text[0] not in ("/", "#", "@", "!"):
         if await bt_e.get_reply_message():
             await bt_e.edit(
-                "`BLUETEXT MUST CLICK.`\n"
-                "`Are you a stupid animal which is attracted to colours?`")
+                "`TESTO BLU, BASTA CLICCARE.`\n"
+                "`Sei uno stupido animale attratto dai colori?`")
 
 
 @register(pattern='.type(?: |$)(.*)')
