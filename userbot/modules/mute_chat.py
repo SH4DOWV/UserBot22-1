@@ -20,7 +20,7 @@ async def unmute_chat(unm_e):
             await unm_e.edit("`Database connections failing!`")
             return
         MONGO.bot.mute_chats.delete_one({"chat_id": unm_e.chat_id})
-        await unm_e.edit("```Unmuted this chat Successfully```")
+        await unm_e.edit("```Chat smutata con successo.```")
 
 
 @register(outgoing=True, pattern="^.mutechat$")
@@ -34,11 +34,11 @@ async def mute_chat(mute_e):
             return
         await mute_e.edit(str(mute_e.chat_id))
         MONGO.bot.mute_chats.insert_one({"chat_id": mute_e.chat_id})
-        await mute_e.edit("`Shush! This chat will be silenced!`")
+        await mute_e.edit("`Shush! Questa chat verrà mutata!`")
         if BOTLOG:
             await mute_e.client.send_message(
                 BOTLOG_CHATID,
-                str(mute_e.chat_id) + " was silenced.")
+                str(mute_e.chat_id) + " era silenziata.")
 
 
 @register(incoming=True)
