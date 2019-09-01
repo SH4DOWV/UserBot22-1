@@ -132,9 +132,9 @@ async def notifoff(noff_event):
     if not noff_event.text[0].isalpha() and noff_event.text[0] not in (
             "/", "#", "@", "!"):
         if await notif_off() is False:
-            return await noff_event.edit('`Notifications already silenced!`')
+            return await noff_event.edit('`Notifiche già silenziate!`')
         else:
-            return await noff_event.edit("`Notifications silenced!`")
+            return await noff_event.edit("`Notifiche silenziate!`")
 
 
 @register(outgoing=True, pattern="^.notifon$")
@@ -160,7 +160,7 @@ async def approvepm(apprvpm):
             return
 
         if await approve(apprvpm.chat_id) is False:
-            return await apprvpm.edit("`User era già approvato!`")
+            return await apprvpm.edit("`Lui era già approvato!`")
         else:
             if apprvpm.reply_to_msg_id:
                 reply = await apprvpm.get_reply_message()
@@ -192,12 +192,12 @@ async def blockpm(block):
     """ For .block command, block people from PMing you! """
     if not block.text[0].isalpha() and block.text[0] not in ("/", "#", "@",
                                                              "!"):
-        await block.edit("`Shadow non riceverà più le notifiche dei tuoi messaggi in PM!`")
+        await block.edit("`Shadow non approva i tuoi messaggi in PM!`")
 
         if await block_pm(block.chat_id) is False:
-            return await block.edit("`First approve, before blocc'ing`")
+            return await block.edit("`Approvo, prima di bloccarti.`")
         else:
-            return await block.edit("`Blocked.`")
+            return await block.edit("`Disapprovato.`")
 
             if block.reply_to_msg_id:
                 reply = await block.get_reply_message()
