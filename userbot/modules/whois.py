@@ -106,24 +106,24 @@ async def fetch_info(replied_user, event):
                                                       str(user_id) + ".jpg",
                                                       download_big=True)
     first_name = first_name.replace(
-        "\u2060", "") if first_name else ("This User has no First Name")
+        "\u2060", "") if first_name else ("Questo utente non ha nome.")
     last_name = last_name.replace(
-        "\u2060", "") if last_name else ("This User has no Last Name")
+        "\u2060", "") if last_name else ("Questo utente non ha cognome.")
     username = "@{}".format(username) if username else (
-        "This User has no Username")
-    user_bio = "This User has no About" if not user_bio else user_bio
+        "Questo utente has non ha Username.")
+    user_bio = "Questo utente non ha descrizione." if not user_bio else user_bio
 
-    caption = "<b>USER INFO:</b> \n"
-    caption += f"First Name: {first_name} \n"
-    caption += f"Last Name: {last_name} \n"
+    caption = "<b>INFO UTENTE:</b> \n"
+    caption += f"Nome: {first_name} \n"
+    caption += f"Cognome: {last_name} \n"
     caption += f"Username: {username} \n"
-    caption += f"Is Bot: {is_bot} \n"
-    caption += f"Is Restricted: {restricted} \n"
-    caption += f"Is Verified by Telegram: {verified} \n"
+    caption += f"Bot: {is_bot} \n"
+    caption += f"Restrizioni: {restricted} \n"
+    caption += f"Verificato da Telegram: {verified} \n"
     caption += f"ID: <code>{user_id}</code> \n \n"
     caption += f"Bio: \n<code>{user_bio}</code> \n \n"
-    caption += f"Common Chats with this user: {common_chat} \n"
-    caption += f"Permanent Link To Profile: "
+    caption += f"Gruppi in comune: {common_chat} \n"
+    caption += f"Link permanente al profilo: "
     caption += f"<a href=\"tg://user?id={user_id}\">{first_name}</a>"
 
     return photo, caption
