@@ -27,16 +27,16 @@ from userbot.modules.dbhelper import (mute, unmute, get_muted, gmute, ungmute,
                                       get_gmuted)
 
 # =================== CONSTANT ===================
-PP_TOO_SMOL = "`The image is too small`"
-PP_ERROR = "`Failure while processing image`"
+PP_TOO_SMOL = "`L'immagine è troppo piccola`"
+PP_ERROR = "`Fail a mettere l'immagine`"
 NO_ADMIN = "`Non sei Admin!`"
-NO_PERM = "`You don't have sufficient permissions!`"
+NO_PERM = "`Non hai i permessi sufficienti!`"
 NO_SQL = "`Database connections failing!`"
 
-CHAT_PP_CHANGED = "`Chat Picture Changed`"
-CHAT_PP_ERROR = "`Some issue with updating the pic,`" \
-                "`maybe you aren't an admin,`" \
-                "`or don't have the desired rights.`"
+CHAT_PP_CHANGED = "`Foto del gruppo cambiata`"
+CHAT_PP_ERROR = "`C'è stato un errore a mettere l'immagine,`" \
+                "`forse non sei admin,`" \
+                "`o non hai i permessi adatti.`"
 INVALID_MEDIA = "`Invalid Extension`"
 
 BANNED_RIGHTS = ChatBannedRights(
