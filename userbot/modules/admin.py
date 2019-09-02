@@ -583,9 +583,9 @@ async def rm_deletedacc(show):
                     del_u += 1
 
             if del_u > 0:
-                del_status = f"found **{del_u}** \
-                 deleted account(s) in this group \
-                \nclean them by using .delusers clean"
+                del_status = f"Trovati **{del_u}** \
+                 Account Eliminati in questo gruppo \
+                \nripulisci usando .delusers clean"
 
             await show.edit(del_status)
             return
@@ -640,7 +640,7 @@ async def get_admin(show):
             return
         info = await show.client.get_entity(show.chat_id)
         title = info.title if info.title else "this chat"
-        mentions = f'<b>Admins in {title}:</b> \n'
+        mentions = f'<b>Admin in {title}:</b> \n'
         try:
             async for user in show.client.iter_participants(
                     show.chat_id, filter=ChannelParticipantsAdmins):
@@ -650,7 +650,7 @@ async def get_admin(show):
                     userid = f"<code>{user.id}</code>"
                     mentions += f"\n{link} {userid}"
                 else:
-                    mentions += f"\nDeleted Account <code>{user.id}</code>"
+                    mentions += f"\nAccount eliminato <code>{user.id}</code>"
         except ChatAdminRequiredError as err:
             mentions += " " + str(err) + "\n"
         await show.edit(mentions, parse_mode="html")
