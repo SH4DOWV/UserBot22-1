@@ -30,7 +30,7 @@ async def mention_afk(mention):
         if AFK is True:
             if mention.sender_id not in USERS:
                 await mention.reply(
-                    "Scusa! Shadow è AFK per " + await afk_reason() +
+                    "Scusa! Shadow è AFK per: " + await afk_reason() +
                     ". Gli manderò una notifica per guardare il messaggio😉.")
                 USERS.update({mention.sender_id: 1})
                 COUNT_MSG = COUNT_MSG + 1
@@ -60,7 +60,7 @@ async def afk_on_pm(e):
         if AFK is True:
             if e.sender_id not in USERS:
                 await e.reply(
-                    "Scusa! Ma shadow è AFK per ```" + await afk_reason() +
+                    "Scusa! Ma shadow è AFK per: ```" + await afk_reason() +
                     "```. Gli manderò una notifica per far vedere il tuo messaggio😉")
                 USERS.update({e.sender_id: 1})
                 COUNT_MSG = COUNT_MSG + 1
