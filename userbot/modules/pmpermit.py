@@ -179,7 +179,7 @@ async def approvepm(apprvpm):
                 uid = apprvpm.chat_id
 
             await apprvpm.edit(
-                f"[{name0}](tg://user?id={uid}) `approvato a scrivermi in PM!`")
+                f"[{name0}](tg://user?id={uid}) `𝘼𝙥𝙥𝙧𝙤𝙫𝙖𝙩𝙤 𝙖 𝙨𝙘𝙧𝙞𝙫𝙚𝙧𝙢𝙞 𝙞𝙣 𝙋𝙫𝙩!`")
 
             if BOTLOG:
                 await apprvpm.client.send_message(
@@ -239,10 +239,10 @@ async def unblockpm(unblock):
             name0 = str(replied_user.user.first_name)
             if await approve(reply.from_id) is False:
                 return await unblock.edit(
-                    "`You haven't blocked this user yet!`")
+                    "`𝙉𝙤𝙣 𝙝𝙖𝙞 𝙗𝙡𝙤𝙘𝙘𝙖𝙩𝙤 𝙦𝙪𝙚𝙨𝙩𝙤 𝙐𝙩𝙚𝙣𝙩𝙚!`")
             else:
                 return await unblock.edit(
-                    "`My Master has forgiven you to PM now`")
+                    "`ꜱʜᴀᴅᴏᴡ, 𝙩𝙞 𝙝𝙖 𝙨𝙗𝙡𝙤𝙘𝙘𝙖𝙩𝙤, 𝙤𝙧𝙖 𝙥𝙪𝙤𝙞 𝙨𝙘𝙧𝙞𝙫𝙚𝙧𝙜𝙡𝙞 𝙞𝙣 𝙋𝙫𝙩.`")
 
             await unblock.client(UnblockRequest(replied_user.user.id))
 
