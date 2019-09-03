@@ -19,10 +19,13 @@ from userbot.modules.dbhelper import (approval, approve, block_pm, notif_state,
 
 # ========================= CONSTANTS ============================
 UNAPPROVED_MSG = (
-    "`Hey! Questo è un messaggio automatico.`"
-    "`Shadow non ti ha approvato a parlare con lui.`"
-    "`Per favore, aspetta che torni, di solito lui approva PM(Private Messages).`"
-    "`Non approva coglioni, che contattano senza permesso o persone mai viste. Invia più di 4 messaggi senza essere approvato e verrai segnalato per spam.`")
+    "`𝐇𝐞𝐲! 𝐐𝐮𝐞𝐬𝐭𝐨 è 𝐮𝐧 𝐦𝐞𝐬𝐬𝐚𝐠𝐠𝐢𝐨 𝐚𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐜𝐨! `"
+    "` `"
+    "`ꜱʜᴀᴅᴏᴡ 𝖓𝖔𝖓 𝖙𝖎 𝖍𝖆 𝖆𝖕𝖕𝖗𝖔𝖛𝖆𝖙𝖔 𝖆 𝖕𝖆𝖗𝖑𝖆𝖗𝖊 𝖈𝖔𝖓 𝖑𝖚𝖎.`"
+    "` `"
+    "`ᴘᴇʀ ꜰᴀᴠᴏʀᴇ, ᴀꜱᴘᴇᴛᴛᴀ ᴄʜᴇ ᴛᴏʀɴɪ, ᴅɪ ꜱᴏʟɪᴛᴏ ʟᴜɪ ᴀᴘᴘʀᴏᴠᴀ ɪ ᴍᴇꜱꜱᴀɢɢɪ ᴘʀɪᴠᴀᴛɪ. `"
+    "` `"
+    "`ɴᴏɴ ᴀᴘᴘʀᴏᴠᴀ ᴄᴏɢʟɪᴏɴɪ, ᴄʜᴇ ᴄᴏɴᴛᴀᴛᴛᴀɴᴏ ꜱᴇɴᴢᴀ ᴘᴇʀᴍᴇꜱꜱᴏ ᴏ ᴘᴇʀꜱᴏɴᴇ ᴍᴀɪ ᴠɪꜱᴛᴇ. ɪɴᴠɪᴀ ᴘɪÙ ᴅɪ 4 ᴍᴇꜱꜱᴀɢɢɪ ꜱᴇɴᴢᴀ ᴇꜱꜱᴇʀᴇ ᴀᴘᴘʀᴏᴠᴀᴛᴏ ᴇ ᴠᴇʀʀᴀɪ ꜱᴇɢɴᴀʟᴀᴛᴏ ᴘᴇʀ ꜱᴘᴀᴍ ᴇ ʙʟᴏᴄᴄᴀᴛᴏ.`")
 # =================================================================
 
 
@@ -71,7 +74,7 @@ async def permitpm(event):
                 if COUNT_PM[event.chat_id] > 4:
                     await event.respond("`Hai mandato più di 4 messaggi, "
                                         " ciò che ti ho detto di non fare.`"
-                                        " `Ti reporto per spam.`")
+                                        " `Ti reporto per spam e ti blocco.`")
 
                     try:
                         del COUNT_PM[event.chat_id]
@@ -160,7 +163,7 @@ async def approvepm(apprvpm):
             return
 
         if await approve(apprvpm.chat_id) is False:
-            return await apprvpm.edit("`Lui era già approvato!`")
+            return await apprvpm.edit("`𝘼𝙥𝙥𝙧𝙤𝙫𝙖𝙩𝙤!`")
         else:
             if apprvpm.reply_to_msg_id:
                 reply = await apprvpm.get_reply_message()
@@ -197,7 +200,7 @@ async def blockpm(block):
         if await block_pm(block.chat_id) is False:
             return await block.edit("`Approvo, prima di bloccarti.`")
         else:
-            return await block.edit("`Disapprovato.`")
+            return await block.edit("`𝘿𝙞𝙨𝙖𝙥𝙥𝙧𝙤𝙫𝙖𝙩𝙤.`")
 
             if block.reply_to_msg_id:
                 reply = await block.get_reply_message()
