@@ -30,16 +30,16 @@ async def mention_afk(mention):
         if AFK is True:
             if mention.sender_id not in USERS:
                 await mention.reply(
-                    "Scusa! Shadow è AFK per: " + await afk_reason() +
-                    ". Gli manderò una notifica per guardare il messaggio😉.")
+                    "𝙎𝙘𝙪𝙨𝙖! 𝙈𝙖 ꜱʜᴀᴅᴏᴡ è 𝘼𝙁𝙆 𝙥𝙚𝙧: " + await afk_reason() +
+                    ". 𝙂𝙡𝙞 𝙢𝙖𝙣𝙙𝙚𝙧ò 𝙪𝙣𝙖 𝙣𝙤𝙩𝙞𝙛𝙞𝙘𝙖 𝙥𝙚𝙧 𝙛𝙖𝙧 𝙫𝙚𝙙𝙚𝙧𝙚 𝙞𝙡 𝙩𝙪𝙤 𝙢𝙚𝙨𝙨𝙖𝙜𝙜𝙞𝙤😉.")
                 USERS.update({mention.sender_id: 1})
                 COUNT_MSG = COUNT_MSG + 1
             elif mention.sender_id in USERS:
                 if USERS[mention.sender_id] % 5 == 0:
                     await mention.reply(
-                        "Scusa! Ma shadow non è ancora tornato. "
-                        "Prova a inviargli un messaggio tra un po'. Mi dispiace😖."
-                        "Mi ha detto che era impegnato per ```" +
+                        "𝙎𝙘𝙪𝙨𝙖! 𝙈𝙖 𝙨𝙝𝙖𝙙𝙤𝙬 𝙣𝙤𝙣 è 𝙖𝙣𝙘𝙤𝙧𝙖 𝙩𝙤𝙧𝙣𝙖𝙩𝙤. "
+                        "𝙋𝙧𝙤𝙫𝙖 𝙖 𝙞𝙣𝙫𝙞𝙖𝙧𝙜𝙡𝙞 𝙪𝙣 𝙢𝙚𝙨𝙨𝙖𝙜𝙜𝙞𝙤 𝙩𝙧𝙖 𝙪𝙣 𝙥𝙤'. 𝙈𝙞 𝙙𝙞𝙨𝙥𝙞𝙖𝙘𝙚😖."
+                        "𝙈𝙞 𝙝𝙖 𝙙𝙚𝙩𝙩𝙤 𝙘𝙝𝙚 𝙚𝙧𝙖 𝙞𝙢𝙥𝙚𝙜𝙣𝙖𝙩𝙤 𝙥𝙚𝙧: ```" +
                         await afk_reason() + "```")
                     USERS[mention.sender_id] = USERS[mention.sender_id] + 1
                     COUNT_MSG = COUNT_MSG + 1
@@ -60,16 +60,16 @@ async def afk_on_pm(e):
         if AFK is True:
             if e.sender_id not in USERS:
                 await e.reply(
-                    "Scusa! Ma shadow è AFK per: ```" + await afk_reason() +
-                    "```. Gli manderò una notifica per far vedere il tuo messaggio😉")
+                    "𝙎𝙘𝙪𝙨𝙖! 𝙈𝙖 ꜱʜᴀᴅᴏᴡ è 𝘼𝙁𝙆 𝙥𝙚𝙧:```" + await afk_reason() +
+                    "```. 𝙂𝙡𝙞 𝙢𝙖𝙣𝙙𝙚𝙧ò 𝙪𝙣𝙖 𝙣𝙤𝙩𝙞𝙛𝙞𝙘𝙖 𝙥𝙚𝙧 𝙛𝙖𝙧 𝙫𝙚𝙙𝙚𝙧𝙚 𝙞𝙡 𝙩𝙪𝙤 𝙢𝙚𝙨𝙨𝙖𝙜𝙜𝙞𝙤😉")
                 USERS.update({e.sender_id: 1})
                 COUNT_MSG = COUNT_MSG + 1
             elif e.sender_id in USERS:
                 if USERS[e.sender_id] % 5 == 0:
                     await e.reply(
-                        "Scusa! Ma shadow non è ancora tornato. "
-                        "Prova a inviargli un messaggio tra un po'. Mi dispiace😖."
-                        "Mi ha detto che era impegnato per ```" +
+                        "𝙎𝙘𝙪𝙨𝙖! 𝙈𝙖 𝙨𝙝𝙖𝙙𝙤𝙬 𝙣𝙤𝙣 è 𝙖𝙣𝙘𝙤𝙧𝙖 𝙩𝙤𝙧𝙣𝙖𝙩𝙤!. "
+                        "𝙋𝙧𝙤𝙫𝙖 𝙖 𝙞𝙣𝙫𝙞𝙖𝙧𝙜𝙡𝙞 𝙪𝙣 𝙢𝙚𝙨𝙨𝙖𝙜𝙜𝙞𝙤 𝙩𝙧𝙖 𝙪𝙣 𝙥𝙤'. 𝙈𝙞 𝙙𝙞𝙨𝙥𝙞𝙖𝙘𝙚😖."
+                        "𝙈𝙞 𝙝𝙖 𝙙𝙚𝙩𝙩𝙤 𝙘𝙝𝙚 𝙚𝙧𝙖 𝙞𝙢𝙥𝙚𝙜𝙣𝙖𝙩𝙤 𝙥𝙚𝙧: ```" +
                         await afk_reason() + "```")
                     USERS[e.sender_id] = USERS[e.sender_id] + 1
                     COUNT_MSG = COUNT_MSG + 1
